@@ -14,7 +14,7 @@ const products = [
       MOQ: "100 pcs",
       LeadTime: "3 weeks"
     },
-    specPdf: "specs/sprocket-spec.pdf" // optional: put a PDF at this path or remove download button in UI
+    specPdf: "specs/sprocket-spec.pdf"
   },
   {
     id: "CH-118",
@@ -52,6 +52,7 @@ const grid = document.getElementById("productGrid");
 products.forEach(p => {
   const card = document.createElement("article");
   card.className = "card reveal";
+  card.dataset.id = p.id; // make the whole card clickable
   card.innerHTML = `
     <div class="card-image">
       <img src="${p.image}" alt="${escapeHtml(p.name)}">
@@ -67,7 +68,7 @@ products.forEach(p => {
   grid.appendChild(card);
 });
 
-// ---------- Reveal on scroll (IntersectionObserver) ----------
+// ---------- Reveal on scroll ----------
 const reveals = document.querySelectorAll('.reveal');
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -89,11 +90,14 @@ const enquireBtn = document.getElementById('enquireBtn');
 const downloadBtn = document.getElementById('downloadBtn');
 
 document.body.addEventListener('click', (ev) => {
-  const btn = ev.target.closest('.viewBtn');
+  // button click OR whole card click
+  const btn = ev.target.closest('.viewBtn, .card');
   if (!btn) return;
-  const id = btn.dataset.id;
+
+  const id = btn.dataset.id || btn.closest('.card').dataset.id;
   const prod = products.find(x => x.id === id);
-  if (!prod) return openModal(prod);
+
+  if (prod) openModal(prod);
 });
 
 function openModal(prod) {
@@ -122,8 +126,7 @@ function openModal(prod) {
     downloadBtn.style.display = 'none';
   }
 
-  // lock scroll
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden'; // lock scroll
 }
 
 // close modal
@@ -137,13 +140,12 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// ---------- Contact form (simple) ----------
+// ---------- Contact form ----------
 const form = document.getElementById('contactForm');
 const formMsg = document.getElementById('formMsg');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   formMsg.textContent = "Thanks — your message is ready in your email client.";
-  // fallback: open mailto for now
   const data = new FormData(form);
   const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
   window.location.href = `mailto:info@acmecycle.com?subject=${encodeURIComponent('Website enquiry')}&body=${encodeURIComponent(body)}`;
@@ -153,4 +155,10 @@ form.addEventListener('submit', (e) => {
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // small helper
-function escapeHtml(s){ return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+function escapeHtml(s){ 
+  return String(s)
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;');
+}
+
