@@ -47,7 +47,7 @@ const products = [
   }
 ];
 
-// ---------- Render product cards ----------
+// Render product cards
 const grid = document.getElementById("productGrid");
 products.forEach(p => {
   const card = document.createElement("article");
@@ -66,35 +66,19 @@ products.forEach(p => {
       </div>
     </div>`;
   grid.appendChild(card);
-  observeReveal(card); // ensure reveal works for dynamically added cards
 });
 
 // ---------- Reveal on scroll ----------
-const observer = new IntersectionObserver((entries) => {
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
-      observer.unobserve(e.target);
+      obs.unobserve(e.target);
     }
   });
-}, { threshold: 0.12 });
-
-function observeReveal(el) {
-  if (el.classList.contains("reveal")) observer.observe(el);
-}
-document.querySelectorAll('.reveal').forEach(observeReveal);
-
-// ---------- Section transitions ----------
-const sections = document.querySelectorAll('.section');
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.3 });
-
-sections.forEach(sec => sectionObserver.observe(sec));
+}, {threshold: 0.12});
+reveals.forEach(r => obs.observe(r));
 
 // ---------- Modal logic ----------
 const modal = document.getElementById('productModal');
@@ -106,6 +90,7 @@ const enquireBtn = document.getElementById('enquireBtn');
 const downloadBtn = document.getElementById('downloadBtn');
 
 document.body.addEventListener('click', (ev) => {
+  // button click OR whole card click
   const btn = ev.target.closest('.viewBtn, .card');
   if (!btn) return;
 
@@ -130,10 +115,10 @@ function openModal(prod) {
     modalSpecs.appendChild(tr);
   }
 
-  // Enquire button
+  // Enquire button: open mailto with product info
   enquireBtn.href = `mailto:info@acmecycle.com?subject=${encodeURIComponent('Enquiry: '+prod.name+' ('+prod.id+')')}&body=${encodeURIComponent('I am interested in '+prod.name+' (SKU: '+prod.id+').\n\nPlease provide pricing and MOQ details.\n\nRegards,\n')}`;
 
-  // Download/spec PDF
+  // download/spec PDF (if provided)
   if (prod.specPdf) {
     downloadBtn.href = prod.specPdf;
     downloadBtn.style.display = 'inline-block';
@@ -166,10 +151,10 @@ form.addEventListener('submit', (e) => {
   window.location.href = `mailto:info@acmecycle.com?subject=${encodeURIComponent('Website enquiry')}&body=${encodeURIComponent(body)}`;
 });
 
-// ---------- Year ----------
+// year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ---------- Helper ----------
+// small helper
 function escapeHtml(s){ 
   return String(s)
     .replaceAll('&','&amp;')
