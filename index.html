@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Acme Cycle Parts — Quality bike components</title>
+  <meta name="description" content="Acme Cycle Parts — sprockets, chains, pedals and more. High quality parts for manufacturers and shops. Contact: +91-XXXXXXXXXX" />
+  <!-- Basic JSON-LD for business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Acme Cycle Parts",
+    "description": "Manufacturing quality cycle parts — sprockets, chains, pedals, frames and accessories.",
+    "telephone": "+91-XXXXXXXXXX",
+    "address": { "@type": "PostalAddress", "addressLocality": "City", "addressRegion": "State", "postalCode": "PIN" }
+  }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header container">
+    <a class="logo" href="#">Acme Cycle Parts</a>
+    <nav class="nav">
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="hero" class="hero">
+      <h1>High-quality cycle parts — made for durability</h1>
+      <p class="lead">Sprockets, chains, pedals, accessories — custom manufacturing and bulk supply.</p>
+      <p><a class="btn" href="#products">View products</a></p>
+    </section>
+
+    <section id="products" class="products">
+      <h2>Our Products</h2>
+      <div id="productGrid" class="grid" aria-live="polite"></div>
+    </section>
+
+    <!-- Modal/lightbox for viewing product images -->
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Product view">
+      <button id="lbClose" class="lb-close" aria-label="Close">✕</button>
+      <div class="lb-inner">
+        <img id="lbImage" alt="" />
+        <div id="lbMeta" class="lb-meta"></div>
+      </div>
+    </div>
+
+    <section id="about" class="about">
+      <h2>About Us</h2>
+      <p>We manufacture cycle parts with focus on strength and precision. ISO-grade processes; bulk orders welcome.</p>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><strong>Phone:</strong> <a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></li>
+        <li><strong>Email:</strong> <a href="mailto:info@acmecycle.com">info@acmecycle.com</a></li>
+        <li><strong>Address:</strong> Factory Road, Industrial Area, City, PIN</li>
+        <li><strong>WhatsApp:</strong> <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+      </ul>
+
+      <h3>Enquiry form</h3>
+      <!-- Simple client-side form that opens mail client as fallback -->
+      <form id="enquiryForm">
+        <label>
+          Name <input name="name" required minlength="2" />
+        </label>
+        <label>
+          Email <input name="email" type="email" required />
+        </label>
+        <label>
+          Message <textarea name="message" required minlength="10"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="btn">Send Enquiry</button>
+        </div>
+        <div id="formMsg" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>© <span id="year"></span> Acme Cycle Parts — <small>Quality you can trust</small></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
