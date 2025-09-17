@@ -17,60 +17,59 @@
     <div class="container nav-inner">
       <a class="logo" href="#hero">Acme Cycle Parts</a>
       <nav class="nav-links" id="topNav">
+        <a href="#hero">Home</a>
         <a href="#products">Products</a>
-        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section id="hero" class="hero">
+  <!-- PAGE 1: HERO -->
+  <section id="hero" class="hero section">
     <div class="overlay"></div>
     <div class="hero-content container">
       <h1 class="reveal">Reliable Cycle Parts — Built for Performance</h1>
       <p class="lead reveal" data-delay="120">ISO-grade manufacturing of sprockets, chains, pedals and more. Precision, durability, timely supply.</p>
       <div class="hero-cta reveal" data-delay="220">
-        <a class="btn primary" href="#products">View Products</a>
+        <a class="btn primary" href="#products">Explore Products</a>
         <a class="btn outline" href="#contact">Request Quote</a>
       </div>
+      <div class="scroll-indicator">↓ Scroll</div>
     </div>
   </section>
 
-  <!-- PRODUCTS -->
-  <section id="products" class="products container">
-    <h2 class="section-title">Featured Products</h2>
-    <p class="section-subtitle">Click a product for specifications & high-resolution view.</p>
-
-    <div id="productGrid" class="grid"></div>
+  <!-- PAGE 2: PRODUCTS -->
+  <section id="products" class="products section">
+    <div class="container">
+      <h2 class="section-title">Featured Products</h2>
+      <p class="section-subtitle">Click a product for specifications & high-resolution view.</p>
+      <div id="productGrid" class="grid"></div>
+    </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="about container">
-    <h2 class="section-title">About Us</h2>
-    <p class="reveal">We are a manufacturing facility specializing in robust cycle components. Our CNC and heat-treatment processes ensure consistent tolerances and long fatigue life. We supply small and bulk orders with quality assurance and timely delivery.</p>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact container">
-    <h2 class="section-title">Contact</h2>
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <p><strong>Phone:</strong> <a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></p>
-        <p><strong>Email:</strong> <a href="mailto:info@acmecycle.com">info@acmecycle.com</a></p>
-        <p><strong>Address:</strong> Industrial Area, City, State, PIN</p>
-        <p><strong>WhatsApp:</strong> <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">Chat with us</a></p>
-      </div>
-
-      <form id="contactForm" class="contact-form reveal">
-        <label>Name <input type="text" name="name" required></label>
-        <label>Email <input type="email" name="email" required></label>
-        <label>Message <textarea name="message" rows="5" required></textarea></label>
-        <div class="form-row">
-          <button type="submit" class="btn primary">Send Enquiry</button>
+  <!-- PAGE 3: CONTACT -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-subtitle">We’d love to hear from you. Get in touch for enquiries or bulk orders.</p>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p><strong>Phone:</strong> <a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></p>
+          <p><strong>Email:</strong> <a href="mailto:info@acmecycle.com">info@acmecycle.com</a></p>
+          <p><strong>Address:</strong> Industrial Area, City, State, PIN</p>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">Chat with us</a></p>
         </div>
-        <div id="formMsg" class="form-msg" aria-live="polite"></div>
-      </form>
+
+        <form id="contactForm" class="contact-form reveal">
+          <label>Name <input type="text" name="name" required></label>
+          <label>Email <input type="email" name="email" required></label>
+          <label>Message <textarea name="message" rows="5" required></textarea></label>
+          <div class="form-row">
+            <button type="submit" class="btn primary">Send Enquiry</button>
+          </div>
+          <div id="formMsg" class="form-msg" aria-live="polite"></div>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -84,9 +83,7 @@
       <div class="modal-right">
         <h3 id="modalTitle"></h3>
         <p id="modalDesc" class="muted"></p>
-
         <table id="modalSpecs" class="specs" role="table"></table>
-
         <div class="modal-actions">
           <a id="enquireBtn" class="btn primary" href="#">Enquire about this product</a>
           <a id="downloadBtn" class="btn outline" href="#" download>Download Spec (PDF)</a>
