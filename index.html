@@ -3,16 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Acme Cycle Parts — Manufacturing Excellence</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Acme Cycle Parts — Precision Components</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- NAV -->
   <header class="navbar">
     <div class="container nav-inner">
       <a class="logo" href="#hero">Acme Cycle Parts</a>
-      <nav class="nav-links">
+      <nav class="nav-links" id="topNav">
         <a href="#products">Products</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -20,57 +24,87 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section id="hero" class="hero">
     <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>Reliable Cycle Parts, Built for Performance</h1>
-      <p>Supplying sprockets, chains, pedals, and more with ISO-grade precision.</p>
-      <a href="#products" class="btn primary">Explore Products</a>
+    <div class="hero-content container">
+      <h1 class="reveal">Reliable Cycle Parts — Built for Performance</h1>
+      <p class="lead reveal" data-delay="120">ISO-grade manufacturing of sprockets, chains, pedals and more. Precision, durability, timely supply.</p>
+      <div class="hero-cta reveal" data-delay="220">
+        <a class="btn primary" href="#products">View Products</a>
+        <a class="btn outline" href="#contact">Request Quote</a>
+      </div>
     </div>
   </section>
 
-  <!-- Products -->
+  <!-- PRODUCTS -->
   <section id="products" class="products container">
-    <h2>Our Products</h2>
-    <p class="section-subtitle">Durable components trusted by manufacturers & retailers</p>
+    <h2 class="section-title">Featured Products</h2>
+    <p class="section-subtitle">Click a product for specifications & high-resolution view.</p>
+
     <div id="productGrid" class="grid"></div>
   </section>
 
-  <!-- About -->
+  <!-- ABOUT -->
   <section id="about" class="about container">
-    <h2>About Us</h2>
-    <p>
-      With years of expertise in cycle parts manufacturing, we deliver precision-engineered
-      components that meet international standards. Our focus on strength, durability, and bulk-order
-      efficiency makes us the preferred partner for global brands.
-    </p>
+    <h2 class="section-title">About Us</h2>
+    <p class="reveal">We are a manufacturing facility specializing in robust cycle components. Our CNC and heat-treatment processes ensure consistent tolerances and long fatigue life. We supply small and bulk orders with quality assurance and timely delivery.</p>
   </section>
 
-  <!-- Contact -->
+  <!-- CONTACT -->
   <section id="contact" class="contact container">
-    <h2>Contact Us</h2>
+    <h2 class="section-title">Contact</h2>
     <div class="contact-grid">
-      <div class="contact-info">
+      <div class="contact-info reveal">
         <p><strong>Phone:</strong> <a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></p>
         <p><strong>Email:</strong> <a href="mailto:info@acmecycle.com">info@acmecycle.com</a></p>
         <p><strong>Address:</strong> Industrial Area, City, State, PIN</p>
-        <p><strong>WhatsApp:</strong> <a href="https://wa.me/91XXXXXXXXXX" target="_blank">Chat with us</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">Chat with us</a></p>
       </div>
-      <form id="contactForm" class="contact-form">
-        <label>Name<input type="text" name="name" required></label>
-        <label>Email<input type="email" name="email" required></label>
-        <label>Message<textarea name="message" rows="5" required></textarea></label>
-        <button type="submit" class="btn primary">Send Message</button>
-        <div id="formMsg" class="form-msg"></div>
+
+      <form id="contactForm" class="contact-form reveal">
+        <label>Name <input type="text" name="name" required></label>
+        <label>Email <input type="email" name="email" required></label>
+        <label>Message <textarea name="message" rows="5" required></textarea></label>
+        <div class="form-row">
+          <button type="submit" class="btn primary">Send Enquiry</button>
+        </div>
+        <div id="formMsg" class="form-msg" aria-live="polite"></div>
       </form>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- PRODUCT MODAL -->
+  <div id="productModal" class="modal" aria-hidden="true" role="dialog" aria-label="Product details">
+    <div class="modal-inner">
+      <button id="modalClose" class="modal-close" aria-label="Close">✕</button>
+      <div class="modal-left">
+        <img id="modalImage" src="" alt="">
+      </div>
+      <div class="modal-right">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc" class="muted"></p>
+
+        <table id="modalSpecs" class="specs" role="table"></table>
+
+        <div class="modal-actions">
+          <a id="enquireBtn" class="btn primary" href="#">Enquire about this product</a>
+          <a id="downloadBtn" class="btn outline" href="#" download>Download Spec (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <p>© <span id="year"></span> Acme Cycle Parts — All rights reserved.</p>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Acme Cycle Parts</div>
+        <div class="footer-links">
+          <a href="#products">Products</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
     </div>
   </footer>
 </body>
